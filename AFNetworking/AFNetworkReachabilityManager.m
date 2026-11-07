@@ -166,7 +166,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
         return nil;
     }
 
-    _networkReachability = CFRetain(reachability);
+    _networkReachability = (SCNetworkReachabilityRef)CFRetain(reachability);
     self.networkReachabilityStatus = AFNetworkReachabilityStatusUnknown;
 
     return self;

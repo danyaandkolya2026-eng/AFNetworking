@@ -979,7 +979,7 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
             credential = result;
             disposition = NSURLSessionAuthChallengeUseCredential;
         } else if ([result isKindOfClass:NSNumber.class]) {
-            disposition = [result integerValue];
+            disposition = (NSURLSessionAuthChallengeDisposition)[result integerValue];
             NSAssert(disposition == NSURLSessionAuthChallengePerformDefaultHandling || disposition == NSURLSessionAuthChallengeCancelAuthenticationChallenge || disposition == NSURLSessionAuthChallengeRejectProtectionSpace, @"");
             evaluateServerTrust = disposition == NSURLSessionAuthChallengePerformDefaultHandling && [challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
         } else {
